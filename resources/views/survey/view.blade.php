@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('layout')
 
 @section('content')
   <div class="card">
@@ -26,11 +26,13 @@
                     <label for="textarea1">Textarea</label>
                   </div>
                 @elseif($question->question_type === 'radio')
-                  @foreach($question->option_name as $key=>$value)
-                    <p style="margin:0px; padding:0px;">
-                      <input name="{{ $question->id }}[answer]" type="radio" id="{{ $key }}" />
-                      <label for="{{ $key }}">{{ $value }}</label>
-                    </p>
+                  
+                    @foreach(explode(',',$question->option_name) as $key=>$value)
+                      <p style="margin:0px; padding:0px;">
+                        <input name="{{ $question->id }}[answer]" type="radio" id="{{$key}}" />
+                        <label for="{{ $key }}" >{{ $value }}</label>
+                      </p>
+                    
                   @endforeach
                 @elseif($question->question_type === 'checkbox')
                   @foreach($question->option_name as $key=>$value)

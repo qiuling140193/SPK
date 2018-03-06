@@ -44,7 +44,8 @@
                       </div>
                     </div>
                     @elseif($question->question_type === 'radio')
-                      @foreach($question->option_name as $key=>$value)
+
+                      @foreach(explode(',',$question->option_name) as $key=>$value)
                         <p style="margin:0px; padding:0px;">
                           <input type="radio" id="{{ $key }}" />
                           <label for="{{ $key }}">{{ $value }}</label>
@@ -73,9 +74,9 @@
           <div class="input-field col s12">
             <select class="browser-default" name="question_type" id="question_type">
               <option value="" disabled selected>Choose your option</option>
-              <option value="text">Text</option>
+              <!-- <option value="text">Text</option>
               <option value="textarea">Textarea</option>
-              <option value="checkbox">Checkbox</option>
+              <option value="checkbox">Checkbox</option -->>
               <option value="radio">Radio Buttons</option>
             </select>
           </div>                
@@ -84,9 +85,9 @@
             <label for="title">Question</label>
           </div>  
           <!-- this part will be chewed by script in init.js -->
-          <span class="form-g"></span>
+          <!-- <span class="form-g"></span>
 
-          <div class="input-field col s12">
+          <div class="input-field col s12"> -->
           <button class="btn waves-effect waves-light">Submit</button>
           </div>
         </div>

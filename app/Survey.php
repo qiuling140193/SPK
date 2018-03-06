@@ -8,6 +8,11 @@ class Survey extends Model
 {
   protected $fillable = ['title', 'description', 'user_id'];
   protected $dates = ['deleted_at'];
+
+  public function getDataAttribute()
+  {
+    return explode(',', $this->question_name);
+  }
   protected $table = 'survey';
 
   public function questions() {
@@ -20,6 +25,10 @@ class Survey extends Model
   
   public function answers() {
     return $this->hasMany(Answer::class);
+  }
+
+  public function questionname() {
+    return $this->belongsTo(QuestionName::class);
   }
 
 }

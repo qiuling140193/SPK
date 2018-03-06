@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Survey;
 use App\Question;
+use App\QuestionName;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class QuestionController extends Controller
         $this->middleware('auth');
     }
   
-    public function store(Request $request, Survey $survey) 
+    public function store(Request $request, Survey $survey, QuestionName $questionname) 
     {
       $arr = $request->all();
       $arr['user_id'] = Auth::id();
@@ -26,12 +27,12 @@ class QuestionController extends Controller
       return back();
     }
 
-    public function edit(Question $question) 
+    public function edit(Question $question, QuestionName $questionname) 
     {
       return view('question.edit', compact('question'));
     }
 
-    public function update(Request $request, Question $question) 
+    public function update(Request $request, Question $question, QuestionName $questionname) 
     {
 
       $question->update($request->all());

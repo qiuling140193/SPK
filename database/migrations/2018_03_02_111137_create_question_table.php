@@ -19,7 +19,7 @@ class CreateQuestionTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('title');
             $table->string('question_type');
-            $table->string('option_name')->nullable();
+            $table->enum('option_name',['Sangat Baik,Baik,Sedang,Buruk,Sangat Buruk']);
             $table->timestamps();
         });
     }

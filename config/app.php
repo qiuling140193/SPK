@@ -168,6 +168,8 @@ return [
          * Package Service Providers...
          */
         SurveyGizmo\SurveyGizmoProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -226,6 +228,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'SurveyGizmo' => SurveyGizmo\SurveyGizmoFacade::class,
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
 
     ],
 

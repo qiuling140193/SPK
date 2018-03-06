@@ -22,12 +22,12 @@ class AnswerController extends Controller
     $arr = $request->except('_token');
     foreach ($arr as $key => $value) {
       $newAnswer = new Answer();
-      if (! is_array( $value )) {
-        $newValue = $value['answer'];
-      } else {
-        $newValue = json_encode($value['answer']);
-      }
-      $newAnswer->answer = $newValue;
+      // if (! is_array( $value )) {
+      //   $newValue = $value['answer'];
+      // } else {
+      //   $newValue = json_encode($value['answer']);
+      // }
+      $newAnswer->answer = $value['answer'];
       $newAnswer->question_id = $key;
       $newAnswer->user_id = Auth::id();
       $newAnswer->survey_id = $survey->id;

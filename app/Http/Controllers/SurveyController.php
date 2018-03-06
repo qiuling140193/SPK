@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Survey;
 use App\Answer;
+use App\Question;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -58,8 +59,9 @@ class SurveyController extends Controller
   }
 
   # view survey publicly and complete survey
-  public function view_survey(Survey $survey) 
+  public function view_survey(Survey $survey, Question $question) 
   { 
+    // return $question=Question::all();
     $survey->option_name = unserialize($survey->option_name);
     return view('survey.view', compact('survey'));
   }
