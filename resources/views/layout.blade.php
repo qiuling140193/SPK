@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Survey App built with Laravel :: Khophi's Dev</title>
-        <link rel="stylesheet" href="{{asset('css/materialize.min.css')}}">
+        <!-- <link rel="stylesheet" href="{{asset('css/materialize.min.css')}}"> -->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
@@ -27,9 +27,9 @@
           </div>
       </div>
     </body>
-    <script src="{{asset('jquery.min.js') }}"></script>
+    <!-- <script src="{{asset('jquery.min.js') }}"></script>
     <script src="{{asset('js/materialize.min.js')}}"></script>
     <script src="{{asset('js/materialize.js')}}"></script>
-    <script src="{{asset('init.js') }}"></script>
+    <script src="{{asset('init.js') }}"></script> -->
 
 </html>
