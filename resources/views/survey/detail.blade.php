@@ -69,6 +69,10 @@
       </ul>
       <h2 class="flow-text">Add Question</h2>
       <form method="POST" action="{{ $survey->id }}/questions" id="boolean">
+        <div class="form-group">
+            <label for="kriteria">Nilai Kriteria</label>
+            <input type="text" class="form-control" id="kriteria" placeholder="Nilai Kriteria" name="kriteria">
+          </div>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
           <div class="input-field col s12">

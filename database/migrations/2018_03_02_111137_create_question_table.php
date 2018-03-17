@@ -20,6 +20,7 @@ class CreateQuestionTable extends Migration
             $table->string('title');
             $table->string('question_type');
             $table->enum('option_name',['Sangat Baik,Baik,Sedang,Buruk,Sangat Buruk']);
+            $table->string('kriteria');
             $table->timestamps();
         });
     }

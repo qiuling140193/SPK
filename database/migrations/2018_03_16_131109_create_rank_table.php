@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionnameTable extends Migration
+class CreateRankTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateQuestionnameTable extends Migration
      */
     public function up()
     {
-        Schema::create('question_names', function (Blueprint $table) {
+        Schema::create('ranks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
+            $table->string('kriteria');
+            $table->string('key');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateQuestionnameTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionname');
+        Schema::dropIfExists('ranks');
     }
 }

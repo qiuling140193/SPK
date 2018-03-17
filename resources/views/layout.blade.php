@@ -14,6 +14,7 @@
                   @if(Auth::check())
                     <a class="btn-flat waves-effect waves-light darken-1 white black-text" href="/logout"> Logout </a>
                     <a class="btn-flat disabled" href="#" style="text-transform:none;">{{ Auth::user()->email }}</a>
+                    <a class="btn-flat disabled" href="answer/rank" style="text-transform:none;"> Lihat Rank Karyawan </a>
                   @else
                     <a class="btn-flat waves-effect waves-light darken-1 white black-text" href="/login"> Login </a>
                     <a class="btn-flat waves-effect waves-light darken-1 white black-text" href="/register"> Register </a>
@@ -27,6 +28,7 @@
           </div>
       </div>
     </body>
+    
     <!-- <script src="{{asset('jquery.min.js') }}"></script>
     <script src="{{asset('js/materialize.min.js')}}"></script>
     <script src="{{asset('js/materialize.js')}}"></script>

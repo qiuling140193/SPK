@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Karyawan;
 
-class KaryawanController extends Controller
+class RankController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-       //
+        //
     }
 
     /**

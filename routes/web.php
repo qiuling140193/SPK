@@ -41,6 +41,7 @@ Route::post('/survey/{survey}/questions', 'QuestionController@store')->name('sto
 
 Route::get('/question/{question}/edit', 'QuestionController@edit')->name('edit.question');
 Route::patch('/question/{question}/update', 'QuestionController@update')->name('update.question');
+Route::get('/answer/rank', 'AnswerController@index')->name('rank');
 Route::auth();
 
 

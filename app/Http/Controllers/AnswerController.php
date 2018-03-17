@@ -6,6 +6,7 @@ use Auth;
 use App\Survey;
 use App\Answer;
 use App\Karyawan;
+use App\Question;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -20,44 +21,51 @@ class AnswerController extends Controller
     $this->middleware('auth');
   }
 
-  public function store(Request $request, Survey $survey, Karyawan $karyawan) 
+  public function index(Survey $survey, Request $request, Answer $answer, Question $question)
+    {
+        $answer=Answer::all();
+        $question=Question::all();
+        return view('answer.rank',compact('question', 'answer'));
+    }
+
+  public function store(Request $request, Survey $survey, Karyawan $karyawan, Question $question) 
   {
+
     // remove the token
-    $arr = $request->except('_token'); 
-    foreach ($arr as $key => $value) { 
+    $arr = $request->except('_token', 'karyawan_id','kriteria');
+    $karyawan_id= $request->input('karyawan_id');
+    $kriteria = array_except($question,['kriteria']);
+    $kriteria=$request->input($question,['kriteria']);
+    foreach($arr as $key => $array) {
       $newAnswer = new Answer();
-        if($value == 'Sangat Baik'){
-          $newAnswer->key='5';
-        }elseif ($value == 'Baik') {
-          $newAnswer->key='4';
-        }elseif ($value == 'Sedang') {
-          $newAnswer->key='3';
-        }elseif ($value == 'Buruk') {
-          $newAnswer->key='2';
-        }elseif ($value == 'Sangat Buruk') {
-          $newAnswer->key='1';
-        }
-          if(array_has($karyawan,'karyawan_id')){
-            $newValue = json_encode($karyawan['karyawan_id']);
-            $newAnswer->karyawan_id = $newValue;
-          } else {
-            $karyawan = array_except($karyawan,['karyawan_id']);
-            $newAnswer->karyawan_id = json_encode($karyawan);
-            $newAnswer->karyawan_id = $karyawan;
-          }
-        
-          
-        
-        $newAnswer->answer=$value;
-        $newAnswer->question_id = $key;
-        $newAnswer->user_id = Auth::id();
-        $newAnswer->survey_id = $survey->id;
-
-
-        $newAnswer->save();
-
-        $answerArray[] = $newAnswer;
-        };
+      switch ($array) {
+        case 'Sangat Baik':
+          $newAnswer->key = '5';
+          break;
+        case 'Baik':
+          $newAnswer->key = '4';
+          break;
+        case 'Sedang':
+          $newAnswer->key = '3';
+          break;
+        case 'Buruk':
+          $newAnswer->key = '2';
+          break;
+        case 'Sangat Buruk':
+          $newAnswer->key = '1';
+          break;
+        default:
+          # code...
+          break;
+      }
+      $newAnswer->karyawan_id = $karyawan_id;
+      $newAnswer->kriteria = $kriteria;
+      $newAnswer->answer = $array;
+      $newAnswer->question_id = $key;
+      $newAnswer->user_id = Auth::id();
+      $newAnswer->survey_id = $survey->id;
+      $newAnswer->save();
+    }
         return redirect()->action('SurveyController@view_survey_answers', [$survey->id,]);
     
   }

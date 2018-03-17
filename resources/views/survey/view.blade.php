@@ -16,9 +16,13 @@
           {!! Form::open(array('action'=>array('AnswerController@store', $survey->id))) !!}
           <div class="form-group">
             <label for="karyawan_id">ID Karyawan</label>
-            <input type="text" value="[karyawan_id]" class="form-control" id="karyawan_id" placeholder="ID Karyawan" name="[karyawan_id]">
+            <input type="text" class="form-control" id="karyawan_id" placeholder="ID Karyawan" name="karyawan_id">
           </div>
+          
           @forelse ($survey->questions as $key=>$question)
+            @foreach($question as $kriteria)
+              <p id="{{$question->id}}[kriteria]" name="$kriteria" value="{{$question->kriteria}}">{{$question -> kriteria }}</p>
+            @endforeach
             <p class="flow-text">Question {{ $key+1 }} - {{ $question->title }}</p>
                 @if($question->question_type === 'text')
                   <div class="input-field col s12">
@@ -36,8 +40,7 @@
                       <p style="margin:0px; padding:0px;">
                         <input name="{{$question->id}}" value="{{$value}}" type="radio" id="question{{$key}}" />
                         <label for="{{ $key }}" >{{ $value }}</label>
-                      </p>
-                    
+                      </p> 
                   @endforeach                  
                 @elseif($question->question_type === 'checkbox')
                   @foreach($question->option_name as $key=>$value)

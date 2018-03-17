@@ -21,6 +21,7 @@ class CreateAnswerTable extends Migration
             $table->string('answer');
             $table->string('key');
             $table->string('karyawan_id');
+            $table->string('kriteria');
             $table->timestamps();
         });
     }
