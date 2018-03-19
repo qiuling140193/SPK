@@ -11,6 +11,7 @@
           <th data-field="survey_id">Survey ID</th>
           <th data-field="answer">Answer</th>
           <th data-field="nilai">Grade</th>
+          <th data-field="kriteria">Kriteria</th>
       </tr>
 
     </thead>

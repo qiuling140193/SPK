@@ -59,7 +59,11 @@ class AnswerController extends Controller
           break;
       }
       $newAnswer->karyawan_id = $karyawan_id;
-      $newAnswer->kriteria = $kriteria;
+      foreach($survey->questions as $question) {
+        if($question->id == $key) {
+          $newAnswer->kriteria = $question->kriteria;    
+        }  
+      }
       $newAnswer->answer = $array;
       $newAnswer->question_id = $key;
       $newAnswer->user_id = Auth::id();
